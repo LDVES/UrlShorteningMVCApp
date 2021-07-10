@@ -8,7 +8,7 @@ namespace UrlShortenerMVCApp.Repositories
 {
     public interface IAddressesRepository
     {
-        Task<List<Address>> GetAddresses(string id);
+        Task<List<Address>> GetAddresses();
         Task<Address> GetAddress(int id);
         Task<Address> CreateAddress(Address addressToCreate);
         Task<Address> UpdateAddress(int id, Address addressToCreate);

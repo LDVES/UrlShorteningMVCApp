@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using UrlShortenerMVCApp.Data;
 using UrlShortenerMVCApp.Models;
 using UrlShortenerMVCApp.Repositories;
-
+using UrlShortenerMVCApp.Services;
 
 namespace UrlShortenerMVCApp
 {
@@ -40,6 +40,7 @@ namespace UrlShortenerMVCApp
             services.AddControllersWithViews();
 
             services.AddScoped<IAddressesRepository, AddressesRepository>();
+            services.AddScoped<IAddressesService, UserAddressesService>();
             
         }
 
