@@ -1,22 +1,33 @@
 ﻿@model UrlShortenerMVCApp.TagHelpers.GetUrlHelper
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "GenerateUrl";
 }
 
-<h1>Details</h1>
-
+<h1>Generate url</h1>
+<hr />
 <div>
-    <h4>Address</h4>
-    <hr />
-    <dl class="row">
-        
-        <a href="@Html.DisplayFor(model => model.GeneratedUrl)" class = "col-sm-10">
-            @Html.DisplayFor(model => model.GeneratedUrl)
-        </a>
-        
-        
-    </dl>
+    
+    
+    
+
+        Url: 
+        <input type="text" class="form-control" value="@Html.DisplayFor(model => model.GeneratedUrl)"  id="url" readonly>
+        </input>
+        <br />
+        <button class="btn btn-secondary"  onclick="CopyUrl()">Copy</button>
+
+        <script>
+            CopyUrl = () => {
+                let urlToCopy = document.getElementById("url");
+                urlToCopy.select();
+                urlToCopy.setSelectionRange(0, 99999);
+                document.execCommand("copy");
+            }
+           
+        </script>
+
+    
 </div>
 <div>
     
