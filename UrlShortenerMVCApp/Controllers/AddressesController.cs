@@ -163,12 +163,7 @@ namespace UrlShortenerMVCApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: Addresses/Redirect/5
-        public async Task<RedirectResult> Redirect(int id)
-        {   
-            var result = await _addressesRepository.GetAddress(id);
-            return Redirect(result.Url);
-        }
+        
 
     }
 }

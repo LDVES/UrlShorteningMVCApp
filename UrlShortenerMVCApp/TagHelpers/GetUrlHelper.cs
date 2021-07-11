@@ -15,7 +15,7 @@ namespace UrlShortenerMVCApp.TagHelpers
             Id = address.Id;
             Name = address.Name;
             Url = address.Url;
-            GeneratedUrl = "https://"+baseUrl +"/Addresses/Redirect/"+Id;
+            GeneratedUrl = "https://"+baseUrl + "/Redirect/RedirectToUrl/" + Id;
         }
     }
 }
