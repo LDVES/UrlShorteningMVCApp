@@ -11,6 +11,7 @@ using UrlShortenerMVCApp.Data;
 using UrlShortenerMVCApp.Models;
 using UrlShortenerMVCApp.Repositories;
 using UrlShortenerMVCApp.Services;
+using UrlShortenerMVCApp.TagHelpers;
 
 namespace UrlShortenerMVCApp.Controllers
 {
@@ -39,6 +40,7 @@ namespace UrlShortenerMVCApp.Controllers
         {
             var currentUserId = _userManager.GetUserId(HttpContext.User);
             var result = _userAddressesService.GetAddresses(currentUserId);
+            
             return View(await result);
         }
 
@@ -51,9 +53,28 @@ namespace UrlShortenerMVCApp.Controllers
             var result = await _userAddressesService.GetAddressDetails(currentUserId, id);
             if (result == null)
                 return NotFound();
+
             return View(result);
             
         }
+
+        [Authorize]
+        // GET: Addresses/GetUrl/5
+        public async Task<IActionResult> GetUrl(int id)
+        {
+
+            var currentUserId = _userManager.GetUserId(HttpContext.User);
+            var result = await _userAddressesService.GetAddressDetails(currentUserId, id);
+            if (result == null)
+                return NotFound();
+
+            var baseUrl = HttpContext.Request.Host.ToString();
+            var helper = new GetUrlHelper(result, baseUrl);
+            
+            return View(helper);
+
+        }
+
         [Authorize]
         // GET: Addresses/Create
         public IActionResult Create() => View();
