@@ -20,6 +20,8 @@ namespace UrlShortenerMVCApp.Controllers
 
         public IActionResult Index()
         {
+            if (HttpContext.User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Addresses");
             return View();
         }
 

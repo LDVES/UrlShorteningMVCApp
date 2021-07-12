@@ -1,8 +1,12 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using Microsoft.AspNetCore.Identity
 
 <div class="text-center">
+
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>In order to access your addresses list log in.</p>
+    <br />
+    <a class="btn btn-lg btn-primary" asp-area="Identity" asp-page="/Account/Login">Log in</a>
+
 </div>
+
+

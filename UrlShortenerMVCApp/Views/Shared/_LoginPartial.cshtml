@@ -7,16 +7,19 @@
     {
         <li class="nav-item">
             <div class="dropdown">
-        
-            <a class="btn btn-info dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                @User.Identity.Name!
-            </a>
-            <div class="dropdown-menu bg-info" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item bg-info text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profile</a>
 
-                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                    <button type="submit" class="dropdown-item bg-info text-white">Logout</button>
-                </form>
+                <a class="btn btn-info dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @User.Identity.Name!
+                </a>
+                <div class="dropdown-menu bg-info" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item bg-info text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profile</a>
+                    <a class="dropdown-item bg-info text-white" asp-area="" asp-controller="Addresses" asp-action="Index">Addresses</a>
+
+
+                    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="dropdown-item bg-info text-white">Logout</button>
+                    </form>
+
 
                 </div>
             </div>
@@ -24,14 +27,14 @@
 
 
 
-        }
-        else
-        {
+    }
+    else
+    {
         <li class="nav-item">
             <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Register">Register</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Login">Login</a>
         </li>
-        }
-    </ul>
+    }
+</ul>
