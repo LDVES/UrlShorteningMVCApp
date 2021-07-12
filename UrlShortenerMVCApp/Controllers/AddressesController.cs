@@ -15,7 +15,7 @@ using UrlShortenerMVCApp.TagHelpers;
 
 namespace UrlShortenerMVCApp.Controllers
 {
-    
+    [Authorize]
     public class AddressesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -34,7 +34,7 @@ namespace UrlShortenerMVCApp.Controllers
             
         }
 
-        [Authorize]
+        
         // GET: Addresses
         public async Task<IActionResult> Index()
         {
@@ -58,7 +58,7 @@ namespace UrlShortenerMVCApp.Controllers
             
         }
 
-        [Authorize]
+        
         // GET: Addresses/GetUrl/5
         public async Task<IActionResult> GetUrl(int id)
         {
@@ -75,11 +75,11 @@ namespace UrlShortenerMVCApp.Controllers
 
         }
 
-        [Authorize]
+        
         // GET: Addresses/Create
         public IActionResult Create() => View();
 
-        [Authorize]
+        
         // POST: Addresses/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -99,7 +99,7 @@ namespace UrlShortenerMVCApp.Controllers
             return View(address);
         }
 
-        [Authorize]
+        
         // GET: Addresses/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
@@ -112,7 +112,7 @@ namespace UrlShortenerMVCApp.Controllers
             return View(address);
         }
 
-        [Authorize]
+        
         // POST: Addresses/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -139,7 +139,7 @@ namespace UrlShortenerMVCApp.Controllers
             return View(address);
         }
 
-        [Authorize]
+        
         // GET: Addresses/Delete/5
         public async Task<IActionResult> Delete(int id)
         {
@@ -150,7 +150,7 @@ namespace UrlShortenerMVCApp.Controllers
             return View(result);
         }
 
-        [Authorize]
+        
         // POST: Addresses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

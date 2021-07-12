@@ -4,19 +4,21 @@
     ViewData["Title"] = "GenerateUrl";
 }
 
-<h1>Generate url</h1>
-<hr />
-<div>
-    
-    
-    
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-lg-6 p-4 mt-3" style="background-color: #2A2C2D;">
+        <h1 class="display-4 text-center mb-3 ">Generated Url</h1>
 
-        Url: 
-        <input type="text" class="form-control" value="@Html.DisplayFor(model => model.GeneratedUrl)"  id="url" readonly>
-        </input>
+
+        <input type="text" class="form-control" value="@Html.DisplayFor(model => model.GeneratedUrl)" id="url" readonly />
+
+        
         <br />
-        <button class="btn btn-secondary"  onclick="CopyUrl()">Copy</button>
-
+        <div class="d-flex flex-row justify-content-lg-between">
+        <button class="btn btn-outline-primary" onclick="CopyUrl()">Copy</button>
+        
+        <a asp-action="Index" class="btn btn-outline-light">Back to List</a>
+        </div>
         <script>
             CopyUrl = () => {
                 let urlToCopy = document.getElementById("url");
@@ -24,12 +26,11 @@
                 urlToCopy.setSelectionRange(0, 99999);
                 document.execCommand("copy");
             }
-           
+
         </script>
 
-    
-</div>
-<div>
-    
-    <a asp-action="Index">Back to List</a>
+
+    </div>
+
+    <div class="col-md-3"></div>
 </div>
