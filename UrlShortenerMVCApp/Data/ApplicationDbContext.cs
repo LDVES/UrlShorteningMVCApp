@@ -15,5 +15,7 @@ namespace UrlShortenerMVCApp.Data
         }
 
         public DbSet<Address> Addresses { get; set; }
+
+        
     }
 }

@@ -9,6 +9,10 @@
 
     <a asp-action="Create" class="btn btn-outline-success mb-3 mt-1">Create New</a>
     
+@if (Model.ToList().Count() > 0)
+{
+
+
 <table class="table table-responsive-sm table-dark table-bordered text-white">
     <thead>
         <tr class="bg-info">
@@ -25,7 +29,8 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -43,3 +48,8 @@
 }
     </tbody>
 </table>
+}
+else
+{
+    <h4 class="text-light text-center">Nothing to display!</h4>
+}

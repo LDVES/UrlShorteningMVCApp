@@ -16,6 +16,7 @@ using UrlShortenerMVCApp.Models;
 using UrlShortenerMVCApp.Repositories;
 using UrlShortenerMVCApp.Services;
 
+
 namespace UrlShortenerMVCApp
 {
     public class Startup
@@ -32,7 +33,7 @@ namespace UrlShortenerMVCApp
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("DockerDbConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -49,6 +50,13 @@ namespace UrlShortenerMVCApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //Auto migration
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                context.Database.Migrate();
+            }
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
