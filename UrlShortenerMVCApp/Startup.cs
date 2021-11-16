@@ -15,6 +15,7 @@ using UrlShortenerMVCApp.Data;
 using UrlShortenerMVCApp.Models;
 using UrlShortenerMVCApp.Repositories;
 using UrlShortenerMVCApp.Services;
+using UrlShortenerMVCApp.Extensions;
 
 
 namespace UrlShortenerMVCApp
@@ -31,19 +32,13 @@ namespace UrlShortenerMVCApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DockerDbConnection")));
+            services.AddApplicationServices(Configuration);
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-               .AddEntityFrameworkStores<ApplicationDbContext>()
-               .AddDefaultUI()
-               .AddDefaultTokenProviders();
+            services.AddIdentityServices(Configuration);
             services.AddControllersWithViews();
 
-            services.AddScoped<IAddressesRepository, AddressesRepository>();
-            services.AddScoped<IAddressesService, UserAddressesService>();
+            
             
         }
 

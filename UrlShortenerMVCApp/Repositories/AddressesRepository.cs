@@ -19,7 +19,7 @@ namespace UrlShortenerMVCApp.Repositories
 
         public async Task<List<Address>> GetAddresses()
         {
-            return await _context.Addresses.Include( a => a.User).ToListAsync();
+            return await _context.Addresses.Include( a => a.User).AsQueryable().ToListAsync();
             //return await _context.Addresses.Where(a => a.ApplicationUserId == id).Include( a => a.User).ToListAsync();
             
         }
